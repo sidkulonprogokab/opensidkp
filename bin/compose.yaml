@@ -1,0 +1,28 @@
+services:
+  web:
+    image: ${APP_IMAGE}
+    container_name: ${APP_CONTAINER}_app
+    ports:
+      - "${APP_PORT}:8080"
+    # volumes:
+    #   - ./desa:/var/www/html/public/desa
+    environment:
+      PHP_OPCACHE_ENABLE: "1"
+      PHP_FPM_PM_START_SERVERS: "5"
+      PHP_FPM_PM_MIN_SPARE_SERVERS: "5"
+      PHP_FPM_PM_MAX_SPARE_SERVERS: "10"
+      PHP_FPM_PM_MAX_CHILDREN: "50"
+      PHP_FPM_PM_MAX_REQUESTS: "500"
+    networks:
+      - desa-network
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "curl --insecure --silent --location --show-error --fail http://localhost:8080 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+networks:
+  desa-network:
+    external: true
