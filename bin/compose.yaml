@@ -1,12 +1,14 @@
 services:
   web:
-    image: ${APP_IMAGE}
+    image: opensidkp:26.04-ssl
     container_name: ${APP_CONTAINER}_app
     ports:
-      - "${APP_PORT}:8080"
-    # volumes:
-    #   - ./desa:/var/www/html/public/desa
+      - "${APP_PORT}:8443"
+    volumes:
+      - ./${APP_CONTAINER}/desa:/var/www/html/public/desa
     environment:
+      SSL_MODE: "full"
+      PHP_DATE_TIMEZONE: "Asia/Jakarta"
       PHP_OPCACHE_ENABLE: "1"
       PHP_FPM_PM_START_SERVERS: "5"
       PHP_FPM_PM_MIN_SPARE_SERVERS: "5"
@@ -17,7 +19,7 @@ services:
       - desa-network
     restart: unless-stopped
     healthcheck:
-      test: ["CMD-SHELL", "curl --insecure --silent --location --show-error --fail http://localhost:8080 || exit 1"]
+      test: ["CMD-SHELL", "curl --insecure --silent --location --show-error --fail https://localhost:8443 || exit 1"]
       interval: 30s
       timeout: 10s
       retries: 3

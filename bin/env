@@ -1,4 +1,4 @@
 # COMPOSE_PROJECT_NAME=desa
-# APP_IMAGE=opensidkp:26.04
+# APP_IMAGE=opensidkp:26.04-ssl
 # APP_CONTAINER=desa
 # APP_PORT=80

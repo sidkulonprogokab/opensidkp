@@ -10,8 +10,6 @@ RUN install-php-extensions gd \
         tidy
 
 COPY --chown=www-data:www-data . /var/www/html/public
-COPY ./bin/default.conf /etc/nginx/conf.d/default.conf
-COPY ./bin/local.ini /usr/local/etc/php/conf.d/local.ini
 
 # Switch back to non-root user for security
 USER www-data
