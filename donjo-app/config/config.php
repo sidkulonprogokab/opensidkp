@@ -80,7 +80,7 @@ $config['trusted_hosts'] = [];
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = APP_URL;
+$config['base_url'] = getenv('APP_URL');
 
 /*
 |--------------------------------------------------------------------------
