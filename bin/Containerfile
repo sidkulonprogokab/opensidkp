@@ -13,5 +13,7 @@ RUN install-php-extensions gd \
 
 COPY --chown=www-data:www-data . /var/www/html/public
 
+COPY --chown=www-data:www-data ./bin/nginx/custom-opensid.conf /etc/nginx/server-opts.d/custom-opensid.conf
+
 # Switch back to non-root user for security
 USER www-data
