@@ -1,4 +1,4 @@
-FROM serversideup/php:8.1-fpm-nginx-alpine-v3.0.0 AS base
+FROM serversideup/php:8.4-fpm-nginx-alpine3.23-v5.0.2 AS base
 
 # Switch to root to install dependencies and copy files
 USER root
