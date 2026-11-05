@@ -136,7 +136,6 @@ Route::group('internal_api', ['namespace' => 'internal_api'], static function ()
 
     // Rute untuk PPID
     Route::get('ppid', 'Api_informasi_publik@ppid');
-    Route::get('produk_hukum', 'Api_informasi_publik@produk_hukum');
 });
 
 // Eksternal API

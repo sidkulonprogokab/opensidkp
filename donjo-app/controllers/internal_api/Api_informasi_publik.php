@@ -94,26 +94,4 @@ class Api_informasi_publik extends Api_Controller
         header('Content-Type: application/json');
         echo json_encode($json_send, JSON_THROW_ON_ERROR);
     }
-
-    public function produk_hukum(): void
-    {
-        $this->log_request();
-
-        $query = Dokumen::where('kategori', '3')
-             ->orderBy('tahun', 'desc');
-
-        $totalData = $query->count();
-        $data = $query->get()->toArray();
-
-        $jsonSend = [
-            'status' => 'success',
-            'data' => [
-                'produk_hukum' => $data,
-                'total_data'   => $totalData,
-            ],
-        ];
-
-        header('Content-Type: application/json; charset=utf-8');
-        echo json_encode($jsonSend, JSON_THROW_ON_ERROR);
-    }
 }
