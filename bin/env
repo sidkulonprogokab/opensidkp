@@ -2,3 +2,4 @@
 # APP_IMAGE=opensidkp:26.04-ssl
 # APP_CONTAINER=desa
 # APP_PORT=80
+# APP_URL=https://kulonprogo.desa.id/
