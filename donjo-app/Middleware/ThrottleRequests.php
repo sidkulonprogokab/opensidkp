@@ -64,7 +64,7 @@ class ThrottleRequests implements MiddlewareInterface
     {
         $request      = request();
         $key          = $this->resolveRequestSignature($request);
-        $maxAttempts  = 60;
+        $maxAttempts  = 600;
         $decaySeconds = 60;
 
         if (RateLimiter::tooManyAttempts($key, $maxAttempts)) {
